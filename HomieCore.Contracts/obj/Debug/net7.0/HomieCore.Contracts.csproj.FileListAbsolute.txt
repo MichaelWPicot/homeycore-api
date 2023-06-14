@@ -1,0 +1,12 @@
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore.Contracts\bin\Debug\net7.0\HomieCore.Contracts.deps.json
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore.Contracts\bin\Debug\net7.0\HomieCore.Contracts.dll
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore.Contracts\bin\Debug\net7.0\HomieCore.Contracts.pdb
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore.Contracts\obj\Debug\net7.0\HomieCore.Contracts.csproj.AssemblyReference.cache
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore.Contracts\obj\Debug\net7.0\HomieCore.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore.Contracts\obj\Debug\net7.0\HomieCore.Contracts.AssemblyInfoInputs.cache
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore.Contracts\obj\Debug\net7.0\HomieCore.Contracts.AssemblyInfo.cs
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore.Contracts\obj\Debug\net7.0\HomieCore.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore.Contracts\obj\Debug\net7.0\HomieCore.Contracts.dll
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore.Contracts\obj\Debug\net7.0\refint\HomieCore.Contracts.dll
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore.Contracts\obj\Debug\net7.0\HomieCore.Contracts.pdb
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore.Contracts\obj\Debug\net7.0\ref\HomieCore.Contracts.dll
