@@ -26,12 +26,7 @@ POST /users
 ```json
 {
     "firstName": "John",
-    "lastName": "Smith",
-    "accountCreatedTime": "2023-06-14T08:00:00",
-    "groups": [
-        "Apartment A",
-        "Apartment B"
-    ]
+    "lastName": "Smith"
 }
 ```
 
@@ -47,6 +42,7 @@ Location: {{host}}/users/{{id}}
 
 ```json
 {
+    "id": "00000000-0000-0000-0000-000000000000",
     "firstName": "John",
     "lastName": "Smith",
     "accountCreatedTime": "2023-06-14T08:00:00",
@@ -96,7 +92,6 @@ PUT /users/{{id}}
 
 ```json
 {
-    "id": "00000000-0000-0000-0000-000000000000",
     "firstName": "John",
     "lastName": "Smith",
     "groups": [

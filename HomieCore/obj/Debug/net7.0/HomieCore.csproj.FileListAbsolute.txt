@@ -5,17 +5,11 @@ C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Deb
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\HomieCore.runtimeconfig.json
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\HomieCore.dll
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\HomieCore.pdb
-C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
-C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Microsoft.OpenApi.dll
-C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\obj\Debug\net7.0\HomieCore.csproj.AssemblyReference.cache
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\obj\Debug\net7.0\HomieCore.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\obj\Debug\net7.0\HomieCore.AssemblyInfoInputs.cache
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\obj\Debug\net7.0\HomieCore.AssemblyInfo.cs
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\obj\Debug\net7.0\HomieCore.csproj.CoreCompileInputs.cache
-C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\obj\Debug\net7.0\HomieCore.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\obj\Debug\net7.0\HomieCore.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\obj\Debug\net7.0\staticwebassets\msbuild.HomieCore.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\obj\Debug\net7.0\staticwebassets\msbuild.build.HomieCore.props
@@ -31,3 +25,8 @@ C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\obj\Deb
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\obj\Debug\net7.0\HomieCore.pdb
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\obj\Debug\net7.0\HomieCore.genruntimeconfig.cache
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\obj\Debug\net7.0\ref\HomieCore.dll
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\HomieCore.Contracts.dll
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\HomieCore.Contracts.pdb
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Microsoft.OpenApi.dll
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\obj\Debug\net7.0\HomieCore.MvcApplicationPartsAssemblyInfo.cs
