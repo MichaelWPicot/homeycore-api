@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "CtZDZv9vCXf9cjSIPenPmWyc7bonoF2ccR+UN6Kbdnv3ndhsb5GEAkM7s07/dxIFGHBqVOxT7QaW3Pr9eWtmpw==",
+  "dgSpecHash": "gEwLDHAw7Dh2kdzWOZ5ibHyWGDZp1LwqKKiSn7/IkGxFrCzjKJW1oTM/uUFDUP0CWnS37yk3ZF/Ihc13VK8TUw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore\\HomieCore.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Michael\\.nuget\\packages\\erroror\\0.1.0\\erroror.0.1.0.nupkg.sha512",
     "C:\\Users\\Michael\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.5\\microsoft.aspnetcore.openapi.7.0.5.nupkg.sha512",
     "C:\\Users\\Michael\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512"
   ],

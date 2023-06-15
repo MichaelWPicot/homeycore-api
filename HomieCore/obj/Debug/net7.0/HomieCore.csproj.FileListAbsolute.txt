@@ -30,3 +30,4 @@ C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Deb
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Microsoft.OpenApi.dll
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\obj\Debug\net7.0\HomieCore.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\ErrorOr.dll

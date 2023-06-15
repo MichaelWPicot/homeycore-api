@@ -5,3 +5,8 @@ Content-Type: application/json
     "firstName": "John",
     "lastName": "Smith"
 }
+
+
+###
+GET GET http://localhost:5190/sers/c79a7668-2c12-4554-a667-a015e26d078
+

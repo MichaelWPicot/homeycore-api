@@ -1,32 +1,100 @@
 using Microsoft.AspNetCore.Mvc;
 using HomieCore.Contracts.User;
-
+using HomieCore.Models;
+using HomieCore.Services.Users;
+using HomieCore.ServiceErrors;
+using ErrorOr;
 namespace HomieCore.Controllers;
 
-[ApiController]
 
-public class UsersController : ControllerBase
+public class UsersController : ApiController
 {
-    [HttpPost("/users")]
+    //inject service dependancy
+    private readonly IUserService _userService;
+    public UsersController(IUserService userService)
+    {
+        _userService = userService;
+    }
+    [HttpPost]
     public IActionResult CreateUser(CreateUserRequest request)
     {
-        return Ok(request);
+        var emptyList = new List<string>();
+        ErrorOr<User> requestToUserResult = User.Create(
+            request.FirstName,
+            request.LastName,
+            DateTime.UtcNow,
+            DateTime.UtcNow,
+            emptyList
+        );
+        if (requestToUserResult.IsError)
+        {
+            return Problem(requestToUserResult.Errors);
+        }
+        var user =  requestToUserResult.Value;
+        ErrorOr<Created> createUserResult= _userService.CreateUser(user);
+        return createUserResult.Match(
+            created => CreatedAtGetUser(user),
+            errors => Problem(errors)
+        );
     }
-
-     [HttpGet("/users/{id:guid}")]
+   
+     [HttpGet("{id:guid}")]
     public IActionResult GetUser(Guid id)
     {
-        return Ok(id);
+        ErrorOr<User> getUserResult = _userService.GetUser(id);
+        return getUserResult.Match(
+            user => Ok(MapUserResponse(user)),
+            errors => Problem(errors)
+        );
     }
-    [HttpPut("/users/{id:guid}")]
+    
+    [HttpPut("{id:guid}")]
     public IActionResult UpsertUser(Guid id, UpsertUserRequest request)
     {
-        return Ok(request);
+        ErrorOr<User> requestToUserResult = User.Create(
+            request.FirstName,
+            request.LastName,
+            DateTime.UtcNow,
+            request.Groups,
+            id
+        );
+        if (requestToUserResult.IsError){
+            return Problem(requestToUserResult.Errors);
+        }
+        var user = requestToUserResult.Value;
+        ErrorOr<UpsertedUser> upsertedUserResult = _userService.UpsertUser(user);
+    
+        return upsertedUserResult.Match(
+            upserted => upserted.IsNewUser ? CreatedAtGetUser(user) : NoContent(),
+            errors => Problem (errors)
+        );
     }
 
-    [HttpDelete("/users/{id:guid}")]
+    [HttpDelete("{id:guid}")]
     public IActionResult DeleteUser(Guid id)
     {
-        return Ok(id);
+        ErrorOr<Deleted> deletedUserResult= _userService.DeleteUser(id);
+        return deletedUserResult.Match(
+            deleted => NoContent(),
+            errors => Problem(errors)
+        );
+    }
+    private static UserResponse MapUserResponse(User user){
+            return new UserResponse(
+                user.Id,
+                user.FirstName,
+                user.LastName,
+                user.AccountCreatedTime,
+                user.LastModifiedDateTime,
+                user.Groups
+            );
+        }
+    private CreatedAtActionResult CreatedAtGetUser(User user)
+    {
+        return CreatedAtAction(
+            actionName: nameof(GetUser),
+            routeValues: new {id = user.Id},
+            value: MapUserResponse(user)
+        );
     }
 }

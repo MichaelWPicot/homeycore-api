@@ -1,12 +1,17 @@
-@id=00000000-0000-0000-0000-000000000000
+@id=3cacf1d2-fb0d-4ad1-a500-af89e8d5220a
 PUT http://localhost:5190/users/{{id}}
 Content-Type: application/json
 
 {
-    "firstName": "John",
+    "firstName": "Lisa",
     "lastName": "Smith",
     "groups": [
         "Apartment A",
         "Apartment B"
     ]
 }
+
+
+###
+GET http://localhost:5190/users/{{id}}
+
