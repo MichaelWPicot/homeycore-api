@@ -6,7 +6,6 @@ using HomieCore.ServiceErrors;
 using ErrorOr;
 namespace HomieCore.Controllers;
 
-
 public class UsersController : ApiController
 {
     //inject service dependancy
@@ -18,26 +17,20 @@ public class UsersController : ApiController
     [HttpPost]
     public IActionResult CreateUser(CreateUserRequest request)
     {
-        var emptyList = new List<string>();
-        ErrorOr<User> requestToUserResult = User.Create(
-            request.FirstName,
-            request.LastName,
-            DateTime.UtcNow,
-            DateTime.UtcNow,
-            emptyList
-        );
+        ErrorOr<User> requestToUserResult = HomieCore.Models.User.From(request);
+
         if (requestToUserResult.IsError)
         {
             return Problem(requestToUserResult.Errors);
         }
-        var user =  requestToUserResult.Value;
-        ErrorOr<Created> createUserResult= _userService.CreateUser(user);
+
+        var user = requestToUserResult.Value;
+        ErrorOr<Created> createUserResult = _userService.CreateUser(user);
+
         return createUserResult.Match(
             created => CreatedAtGetUser(user),
-            errors => Problem(errors)
-        );
+            errors => Problem(errors));
     }
-   
      [HttpGet("{id:guid}")]
     public IActionResult GetUser(Guid id)
     {
@@ -47,23 +40,15 @@ public class UsersController : ApiController
             errors => Problem(errors)
         );
     }
-    
     [HttpPut("{id:guid}")]
     public IActionResult UpsertUser(Guid id, UpsertUserRequest request)
     {
-        ErrorOr<User> requestToUserResult = User.Create(
-            request.FirstName,
-            request.LastName,
-            DateTime.UtcNow,
-            request.Groups,
-            id
-        );
+        ErrorOr<User> requestToUserResult = HomieCore.Models.User.From( id, request);
         if (requestToUserResult.IsError){
             return Problem(requestToUserResult.Errors);
         }
         var user = requestToUserResult.Value;
         ErrorOr<UpsertedUser> upsertedUserResult = _userService.UpsertUser(user);
-    
         return upsertedUserResult.Match(
             upserted => upserted.IsNewUser ? CreatedAtGetUser(user) : NoContent(),
             errors => Problem (errors)
@@ -84,7 +69,6 @@ public class UsersController : ApiController
                 user.Id,
                 user.FirstName,
                 user.LastName,
-                user.AccountCreatedTime,
                 user.LastModifiedDateTime,
                 user.Groups
             );

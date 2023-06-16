@@ -10,29 +10,26 @@ public class User{
     public Guid Id {get;}
     public string FirstName {get;}
     public string LastName {get;}
-    public DateTime AccountCreatedTime {get;}
     public DateTime LastModifiedDateTime {get;}
     public List<string> Groups {get;}
 
-
     private User(
-  
         Guid id,
         string firstName,
         string lastName,
-        DateTime accountCreatedTime,
         DateTime lastModifiedTime,
         List<string> groups
     ){
         Id = id;
         FirstName = firstName;
         LastName = lastName;
-        AccountCreatedTime = accountCreatedTime;
+        LastModifiedDateTime = lastModifiedTime;
         Groups = groups;
     }
     public static ErrorOr<User> Create(
         string firstName,
         string lastName,
+        List<string>? groups = null,
         Guid? id = null
     )
     {
@@ -48,14 +45,28 @@ public class User{
         if (errors.Count>0){
             return errors;
         }
-        List<string> emptyList = new();
+        List<String> groupList = new();
         return new User(
             id ?? Guid.NewGuid(),
             firstName,
             lastName,
             DateTime.UtcNow,
-            DateTime.UtcNow,
-            emptyList
+            groups ?? groupList
         );
+    }
+       public static ErrorOr<User> From(CreateUserRequest request)
+    {
+        return Create(
+            request.FirstName,
+            request.LastName);
+    }
+
+    public static ErrorOr<User> From(Guid id, UpsertUserRequest request)
+    {
+        return Create(
+            request.FirstName,
+            request.LastName,
+            request.Groups,
+            id);
     }
 }

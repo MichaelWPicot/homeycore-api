@@ -8,5 +8,6 @@ Content-Type: application/json
 
 
 ###
-GET GET http://localhost:5190/sers/c79a7668-2c12-4554-a667-a015e26d078
+GET GET http://localhost:5190/users/c8f84b11-09f0-466e-8565-226edb0e5e84
+
 

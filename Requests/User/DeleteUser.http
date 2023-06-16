@@ -1,4 +1,4 @@
-@id =3cacf1d2-fb0d-4ad1-a500-af89e8d5220a
+@id =c8f84b11-09f0-466e-8565-226edb0e5e84
 DELETE http://localhost:5190/users/{{id}}
 
 

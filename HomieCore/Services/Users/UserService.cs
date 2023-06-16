@@ -31,5 +31,4 @@ public class UserService : IUserService
         _users[user.Id]= user;
         return new UpsertedUser(IsNewUser);
     }
-
 }
