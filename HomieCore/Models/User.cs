@@ -4,7 +4,7 @@ using ErrorOr;
 
 namespace HomieCore.Models;
 
-public class User{
+public sealed class User{
     public const int MinNameLength=2;
     public const int MaxNameLength=20;
     public Guid Id {get;}

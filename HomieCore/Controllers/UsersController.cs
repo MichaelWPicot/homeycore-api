@@ -28,7 +28,7 @@ public class UsersController : ApiController
         ErrorOr<Created> createUserResult = _userService.CreateUser(user);
 
         return createUserResult.Match(
-            created => CreatedAtGetUser(user),
+            _ => CreatedAtGetUser(user),
             errors => Problem(errors));
     }
      [HttpGet("{id:guid}")]
@@ -60,7 +60,7 @@ public class UsersController : ApiController
     {
         ErrorOr<Deleted> deletedUserResult= _userService.DeleteUser(id);
         return deletedUserResult.Match(
-            deleted => NoContent(),
+            _ => NoContent(),
             errors => Problem(errors)
         );
     }
