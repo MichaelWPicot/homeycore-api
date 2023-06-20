@@ -6,7 +6,6 @@ using HomieCore.ServiceErrors;
 using ErrorOr;
 namespace HomieCore.Controllers;
 
-
 public class UsersController : ApiController
 {
     //inject service dependancy
