@@ -183,6 +183,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "DotNetEnv": {
+              "target": "Package",
+              "version": "[2.5.0, )"
+            },
             "ErrorOr": {
               "target": "Package",
               "version": "[0.1.0, )"

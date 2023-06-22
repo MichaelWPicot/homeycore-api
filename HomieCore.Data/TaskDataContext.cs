@@ -15,15 +15,6 @@ namespace HomieCore.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // modelBuilder.Entity<Task>()
-            // .HasRequired(t => t.UserCreated)
-            // .WithMany(u => u.CreatedTasks)
-            // .HasForeignKey(m => m.HomeTeamId)
-            // .WillCascadeOnDelete(false);
-            // modelBuilder.Entity<Task>()
-            // .HasMany(e=>e.Users)
-            // .WithMany(e=>e.Tasks)
-            // .HasForeignKey("UserCreatedId");
         }
         public DbSet<User> Users {get;set;} = null!;
         public DbSet<Group> Groups {get;set;} = null!;
