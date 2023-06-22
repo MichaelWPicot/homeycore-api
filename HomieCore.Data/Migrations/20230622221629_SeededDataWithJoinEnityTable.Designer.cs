@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HomieCore.Data.Migrations
 {
     [DbContext(typeof(TaskDataContext))]
-    [Migration("20230622060059_initialcreation")]
-    partial class Initialcreation
+    [Migration("20230622221629_SeededDataWithJoinEnityTable")]
+    partial class SeededDataWithJoinEnityTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,30 +27,30 @@ namespace HomieCore.Data.Migrations
 
             modelBuilder.Entity("GroupTask", b =>
                 {
-                    b.Property<int>("GroupsId")
-                        .HasColumnType("integer");
-
                     b.Property<int>("TasksId")
                         .HasColumnType("integer");
 
-                    b.HasKey("GroupsId", "TasksId");
+                    b.Property<int>("GroupsId")
+                        .HasColumnType("integer");
 
-                    b.HasIndex("TasksId");
+                    b.HasKey("TasksId", "GroupsId");
+
+                    b.HasIndex("GroupsId");
 
                     b.ToTable("GroupTask");
                 });
 
             modelBuilder.Entity("GroupUser", b =>
                 {
-                    b.Property<int>("GroupsId")
-                        .HasColumnType("integer");
-
                     b.Property<int>("UsersId")
                         .HasColumnType("integer");
 
-                    b.HasKey("GroupsId", "UsersId");
+                    b.Property<int>("GroupsId")
+                        .HasColumnType("integer");
 
-                    b.HasIndex("UsersId");
+                    b.HasKey("UsersId", "GroupsId");
+
+                    b.HasIndex("GroupsId");
 
                     b.ToTable("GroupUser");
                 });
@@ -77,6 +77,22 @@ namespace HomieCore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Groups");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            GroupDescription = "Wasted Potential",
+                            GroupName = "Night's Watch",
+                            LastModifiedTime = new DateTime(2023, 6, 22, 22, 16, 29, 156, DateTimeKind.Utc).AddTicks(5806)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            GroupDescription = "PC Port Is Going To Take So Long",
+                            GroupName = "Rosaria Nobels",
+                            LastModifiedTime = new DateTime(2023, 6, 22, 22, 16, 29, 156, DateTimeKind.Utc).AddTicks(5808)
+                        });
                 });
 
             modelBuilder.Entity("HomieCore.Data.Task", b =>
@@ -117,6 +133,30 @@ namespace HomieCore.Data.Migrations
                     b.HasIndex("CreatedUserId");
 
                     b.ToTable("Tasks");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AssignedUserId = 2,
+                            CompleteByDate = new DateTime(2023, 6, 22, 22, 16, 29, 156, DateTimeKind.Utc).AddTicks(5816),
+                            CreatedUserId = 1,
+                            LastModifiedDateTime = new DateTime(2023, 6, 22, 22, 16, 29, 156, DateTimeKind.Utc).AddTicks(5817),
+                            TaskCreatedDate = new DateTime(2023, 6, 22, 22, 16, 29, 156, DateTimeKind.Utc).AddTicks(5817),
+                            TaskDescription = "You know Nuthin Jon Snow",
+                            TaskName = "Free The North"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AssignedUserId = 1,
+                            CompleteByDate = new DateTime(2023, 6, 22, 22, 16, 29, 156, DateTimeKind.Utc).AddTicks(5820),
+                            CreatedUserId = 2,
+                            LastModifiedDateTime = new DateTime(2023, 6, 22, 22, 16, 29, 156, DateTimeKind.Utc).AddTicks(5821),
+                            TaskCreatedDate = new DateTime(2023, 6, 22, 22, 16, 29, 156, DateTimeKind.Utc).AddTicks(5820),
+                            TaskDescription = "Will That Really Solve Anything?",
+                            TaskName = "Get Revenge"
+                        });
                 });
 
             modelBuilder.Entity("HomieCore.Data.User", b =>
@@ -141,6 +181,22 @@ namespace HomieCore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FirstName = "Jon",
+                            LastModifiedDateTime = new DateTime(2023, 6, 22, 22, 16, 29, 156, DateTimeKind.Utc).AddTicks(5696),
+                            LastName = "Snow"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            FirstName = "Clive",
+                            LastModifiedDateTime = new DateTime(2023, 6, 22, 22, 16, 29, 156, DateTimeKind.Utc).AddTicks(5698),
+                            LastName = "Rosfield"
+                        });
                 });
 
             modelBuilder.Entity("GroupTask", b =>

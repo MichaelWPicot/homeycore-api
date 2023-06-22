@@ -4,3 +4,5 @@ dotnet ef migrations add initialcreation -s ../HomieCore/HomieCore.csproj
 
 
 dotnet ef database update -s ../HomieCore/HomieCore.csproj
+
+dotnet run seeddata -s ../HomieCore/HomieCore.csproj

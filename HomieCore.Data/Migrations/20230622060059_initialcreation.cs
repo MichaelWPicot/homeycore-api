@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HomieCore.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class initialcreation : Migration
+    public partial class Initialcreation : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

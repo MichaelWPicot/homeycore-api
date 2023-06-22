@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HomieCore.Data.Migrations
 {
     [DbContext(typeof(TaskDataContext))]
-    [Migration("20230622060059_initialcreation")]
-    partial class Initialcreation
+    [Migration("20230622214611_SeededDataWithJoinTables")]
+    partial class SeededDataWithJoinTables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -77,6 +77,22 @@ namespace HomieCore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Groups");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            GroupDescription = "Wasted Potential",
+                            GroupName = "Night's Watch",
+                            LastModifiedTime = new DateTime(2023, 6, 22, 21, 46, 10, 940, DateTimeKind.Utc).AddTicks(135)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            GroupDescription = "PC Port Is Going To Take So Long",
+                            GroupName = "Rosaria Nobels",
+                            LastModifiedTime = new DateTime(2023, 6, 22, 21, 46, 10, 940, DateTimeKind.Utc).AddTicks(137)
+                        });
                 });
 
             modelBuilder.Entity("HomieCore.Data.Task", b =>
@@ -117,6 +133,30 @@ namespace HomieCore.Data.Migrations
                     b.HasIndex("CreatedUserId");
 
                     b.ToTable("Tasks");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AssignedUserId = 2,
+                            CompleteByDate = new DateTime(2023, 6, 22, 21, 46, 10, 940, DateTimeKind.Utc).AddTicks(150),
+                            CreatedUserId = 1,
+                            LastModifiedDateTime = new DateTime(2023, 6, 22, 21, 46, 10, 940, DateTimeKind.Utc).AddTicks(151),
+                            TaskCreatedDate = new DateTime(2023, 6, 22, 21, 46, 10, 940, DateTimeKind.Utc).AddTicks(150),
+                            TaskDescription = "You know Nuthin Jon Snow",
+                            TaskName = "Free The North"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AssignedUserId = 1,
+                            CompleteByDate = new DateTime(2023, 6, 22, 21, 46, 10, 940, DateTimeKind.Utc).AddTicks(153),
+                            CreatedUserId = 2,
+                            LastModifiedDateTime = new DateTime(2023, 6, 22, 21, 46, 10, 940, DateTimeKind.Utc).AddTicks(153),
+                            TaskCreatedDate = new DateTime(2023, 6, 22, 21, 46, 10, 940, DateTimeKind.Utc).AddTicks(153),
+                            TaskDescription = "Will That Really Solve Anything?",
+                            TaskName = "Get Revenge"
+                        });
                 });
 
             modelBuilder.Entity("HomieCore.Data.User", b =>
@@ -141,6 +181,22 @@ namespace HomieCore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FirstName = "Jon",
+                            LastModifiedDateTime = new DateTime(2023, 6, 22, 21, 46, 10, 940, DateTimeKind.Utc).AddTicks(35),
+                            LastName = "Snow"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            FirstName = "Clive",
+                            LastModifiedDateTime = new DateTime(2023, 6, 22, 21, 46, 10, 940, DateTimeKind.Utc).AddTicks(37),
+                            LastName = "Rosfield"
+                        });
                 });
 
             modelBuilder.Entity("GroupTask", b =>
