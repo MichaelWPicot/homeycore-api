@@ -31,3 +31,15 @@ C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Deb
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Microsoft.OpenApi.dll
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\obj\Debug\net7.0\HomieCore.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\ErrorOr.dll
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Npgsql.dll
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\HomieCore.Data.dll
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\HomieCore.Data.pdb
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Humanizer.dll
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\System.CodeDom.dll
