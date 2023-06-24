@@ -122,7 +122,6 @@ Location: {{host}}/users/{{id}}
 ```js
 DELETE /users/{{id}}
 ```
-
 ### Delete User Response
 
 ```js
