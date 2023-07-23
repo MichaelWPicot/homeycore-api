@@ -34,14 +34,3 @@ app.UseAuthorization();
 app.MapControllers();
 app.Run();
 }
-
-//   if(args.Length==1 && string.Equals(args[0], "seeddata", StringComparison.OrdinalIgnoreCase))
-//     {
-//         SeedData(app);
-//     }
-//     static void SeedData(IHost app){
-//         var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
-//     using var scope = scopedFactory?.CreateScope();
-//     var service = scope?.ServiceProvider.GetService<TaskDataSeed>();
-//     service?.Seed();
-// }
