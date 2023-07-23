@@ -1,4 +1,4 @@
-#Homie Core Back End Client
+# Homie Core Back End Client
 ___
 - [Overview](#overview)
 - [Service Architecture](#service-architecture)
@@ -9,7 +9,7 @@ ___
 - [API Documentation](#api-documentation)
 - [Credits](#credits)
 ___
-#Overview
+# Overview
 This project presents a comprehensive CRUD (Create, Read, Update, Delete) REST API, using `ASP.Net v7.0`. The API facilitates the smooth management of `Users`, `Groups`, and `Tasks` - the primary entities in the application.
 
 The `Users` table maintains information about the application users, the `Groups` table holds data about user groups, and the `Tasks` table handles task details that are assigned to the users. The `Tasks` table specifically includes two foreign keys: `CreatedUserId` and `AssignedUserId`, establishing a relationship with the `Users` table.
@@ -22,7 +22,7 @@ Before launching the application, set up a database connection and configure you
 
 A detailed description of the [Database Schema](#database-schema) is provided to explain the database's entity relationships.
 ___
-#Service Architecture
+# Service Architecture
 
 - HomieCore.Contracts
     - Group
@@ -79,10 +79,10 @@ ___
     - Program.cs
 ___
 
-#Technologies
+# Technologies
 This project utilizes the following technologies: `C#` `ASP.NET v7.0` `ASP.NET Core OpenApi` `ASP.NET Core MVC` `ASP.NET Entity Framework Core` `Npgsql` `PostgreSQL` `dotnet CLI`
 ___
-#How To Install
+# How To Install
 1. run `git clone https://github.com/MichaelWPicot/homiecore-api`
 
 2. Copy the sample .env file and place it within the ./HomieCore/ folder.
@@ -97,7 +97,7 @@ ___
 
 `dotnet run --project HomieCore/HomieCore.csproj`
 ___
-#Database Schema 
+# Database Schema 
 The application database consists of five tables: `Tasks`, `Users`, `Groups`, `GroupTask`, and `GroupUser`.
 
 Refer to the Entity Relationship Diagram below for a visual depiction of this schema:
@@ -149,7 +149,7 @@ The GroupUser table is an associative table that establishes a many-to-many rela
 
 _Each record in the `GroupUser` table represents the user's membership in a group._
 ___
-#Database Migrations
+# Database Migrations
 All terminal commands related to database migrations should be run inside the HomieCore.Data folder. 
 
 _Note: When dotnet migrations are being generated or applied to HomieCore.Data an additional reference to HomieCore.csproj is included for the database connection and must be included by appending the following to the end of all commands:_ 
@@ -169,7 +169,7 @@ To update the database to the current migration run the following command:
 dotnet ef database update -s ../HomieCore/HomieCore.csproj
 ```
 ___
-#API Documentation
+# API Documentation
 - [User Table](#user-table)
     - [Create User](#create-user)
         - [Create User Request](#create-user-request)
