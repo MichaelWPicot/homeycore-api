@@ -8,7 +8,7 @@ public sealed class Task{
     public const int MinNameLength=2;
     public const int MaxNameLength=20;
     public const int MaxDescriptionLength=200;
-    public Guid Id {get;}
+    public int Id {get;}
     public string TaskName {get;}
     public string TaskDescription {get;}
     public DateTime CompleteByDate{get;}
@@ -17,7 +17,7 @@ public sealed class Task{
     public int AssignedUserId {get;}
     public int CreatedUserId {get;}
     private Task(
-        Guid id,
+        int id,
         string taskName,
         string taskDescription,
         DateTime lastModifiedDateTime,
@@ -42,7 +42,7 @@ public sealed class Task{
         DateTime completeByDate,
         int createdUserId,
         int assignedUserId,
-        Guid? id = null
+        int? id = null
     ){
         List<Error> errors = new();
         //TODO: Implement error logic
@@ -59,7 +59,7 @@ public sealed class Task{
         }
         //TODO: Update related users
         return new Task(
-            id ?? Guid.NewGuid(),
+            id ?? BitConverter.ToInt32(Guid.NewGuid().ToByteArray()),
             taskName,
             taskDescription,
             DateTime.UtcNow,
@@ -79,7 +79,7 @@ public sealed class Task{
                 request.AssignedUserId
             );
         }
-    public static ErrorOr<Task> From(Guid id, UpsertTaskRequest request)
+    public static ErrorOr<Task> From(int id, UpsertTaskRequest request)
     {
         return Create(
             request.TaskName,

@@ -7,30 +7,26 @@ namespace HomieCore.Models;
 public sealed class User{
     public const int MinNameLength=2;
     public const int MaxNameLength=20;
-    public Guid Id {get;}
+    public int Id {get;}
     public string FirstName {get;}
     public string LastName {get;}
     public DateTime LastModifiedDateTime {get;}
-    public List<string> Groups {get;}
 
     private User(
-        Guid id,
+        int id,
         string firstName,
         string lastName,
-        DateTime lastModifiedTime,
-        List<string> groups
+        DateTime lastModifiedTime
     ){
         Id = id;
         FirstName = firstName;
         LastName = lastName;
         LastModifiedDateTime = lastModifiedTime;
-        Groups = groups;
     }
     public static ErrorOr<User> Create(
         string firstName,
         string lastName,
-        List<string>? groups = null,
-        Guid? id = null
+        int? id = null
     )
     {
         List<Error> errors = new();
@@ -45,13 +41,11 @@ public sealed class User{
         if (errors.Count>0){
             return errors;
         }
-        List<String> groupList = new();
         return new User(
-            id ?? Guid.NewGuid(),
+            id ?? BitConverter.ToInt32(Guid.NewGuid().ToByteArray()),
             firstName,
             lastName,
-            DateTime.UtcNow,
-            groups ?? groupList
+            DateTime.UtcNow
         );
     }
        public static ErrorOr<User> From(CreateUserRequest request)
@@ -61,12 +55,11 @@ public sealed class User{
             request.LastName);
     }
 
-    public static ErrorOr<User> From(Guid id, UpsertUserRequest request)
+    public static ErrorOr<User> From(int id, UpsertUserRequest request)
     {
         return Create(
             request.FirstName,
             request.LastName,
-            request.Groups,
             id);
     }
 }

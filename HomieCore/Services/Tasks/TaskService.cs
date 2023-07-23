@@ -9,36 +9,60 @@ public class TaskService : ITaskService
     public TaskService(HomieCore.Data.DataContext dataContext){
         _dataContext = dataContext;
     }
-    private static readonly Dictionary<Guid, HomieCore.Models.Task> _tasks = new();
     public async Task<ErrorOr<Created>> CreateTask(HomieCore.Data.Task task)
     {
         _dataContext.Tasks.Add(task);
-        await _dataContext.SaveChangesAsync();
-
-        return Result.Created;
+        int changes = await _dataContext.SaveChangesAsync();
+        if (changes>0){
+            return Result.Created;
+        } else {
+            return Error.Failure("General.Failure");
+        }
     }
     public ErrorOr<HomieCore.Data.Task> GetTask(int id)
     {
-        HomieCore.Data.Task taskData = _dataContext.Tasks.Where(x => x.Id == id).FirstOrDefault();
-        if(taskData==null){
-            return Errors.Task.NotFound;
-        }
-        return taskData;
+        HomieCore.Data.Task? taskData = _dataContext.Tasks.Where(x => x.Id == id).FirstOrDefault();
+        return taskData ?? (ErrorOr<Data.Task>)Errors.Task.NotFound;
     }
      public List<HomieCore.Data.Task> GetAllTask()
     {
         var taskData = _dataContext.Tasks.ToList();
         return taskData;
     }
-    public ErrorOr<Deleted> DeleteTask(Guid id){
+    public async Task<ErrorOr<Deleted>> DeleteTask(int id){
         //TODO: remove task from group that they are in.
-        _tasks.Remove(id);
-        return Result.Deleted;
+        _dataContext.Remove(_dataContext.Tasks.Single(t=> t.Id ==id));
+        int changes = await _dataContext.SaveChangesAsync();
+        if (changes>0){
+            return Result.Deleted;
+        } else {
+            return Error.Failure("General.Failure");
+        }
     }
-    public ErrorOr<UpsertedTask> UpsertTask(HomieCore.Models.Task task)
+    public async Task<ErrorOr<UpsertedTask>> UpsertTask(HomieCore.Data.Task task)
     {
-        var IsNewTask = !_tasks.ContainsKey(task.Id);
-        _tasks[task.Id]= task;
-        return new UpsertedTask(IsNewTask);
+        HomieCore.Data.Task? taskExists = await _dataContext.Tasks.FindAsync(task.Id);
+        if (taskExists!=null){
+            taskExists.AssignedUserId = task.AssignedUserId;
+            taskExists.CreatedUserId = task.CreatedUserId;
+            taskExists.TaskName = task.TaskName;
+            taskExists.TaskDescription =task.TaskDescription;
+            taskExists.CompleteByDate=task.CompleteByDate;
+            taskExists.LastModifiedDateTime=DateTime.UtcNow;
+            int changes = await _dataContext.SaveChangesAsync();
+            if (changes>0){
+                return new UpsertedTask(false);
+            } else {
+                return Error.Failure("General.Failure");
+            }
+        } else {
+            _dataContext.Tasks.Add(task);
+            int changes = await _dataContext.SaveChangesAsync();
+             if (changes>0){
+                return new UpsertedTask(true);
+            } else {
+                return Error.Failure("General.Failure");
+            }
+        }
     }
 }

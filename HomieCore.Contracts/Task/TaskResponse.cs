@@ -1,10 +1,10 @@
 namespace HomieCore.Contracts.Task;
 
 public record TaskResponse(
-    Guid Id,
+    int Id,
     string TaskName,
     string TaskDescription,
-    DateTime LastModifiedDateTime,
+    DateTime LastModifiedTime,
     DateTime TaskCreatedDate,
     DateTime CompleteByDate,
     int CreatedUserId,

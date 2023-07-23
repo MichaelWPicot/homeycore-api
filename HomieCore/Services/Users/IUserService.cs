@@ -5,8 +5,9 @@ namespace HomieCore.Services.Users;
 
 public interface IUserService
 {
-    ErrorOr<Created> CreateUser(User user);
-    ErrorOr<User> GetUser(Guid id);
-    ErrorOr<Deleted> DeleteUser(Guid id);
-    ErrorOr<UpsertedUser> UpsertUser(User user);
+    Task<ErrorOr<Created>> CreateUser(HomieCore.Data.User user);
+    ErrorOr<HomieCore.Data.User> GetUser(int id);
+    Task<ErrorOr<Deleted>> DeleteUser(int id);
+    Task<ErrorOr<UpsertedUser>> UpsertUser(HomieCore.Data.User user);
+    List<HomieCore.Data.User> GetAllUser();
 }

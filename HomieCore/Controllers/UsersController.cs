@@ -17,68 +17,78 @@ public class UsersController : ApiController
     [HttpPost]
     public IActionResult CreateUser(CreateUserRequest request)
     {
-        ErrorOr<User> requestToUserResult = HomieCore.Models.User.From(request);
-
+        ErrorOr<HomieCore.Models.User> requestToUserResult = HomieCore.Models.User.From(request);
         if (requestToUserResult.IsError)
         {
             return Problem(requestToUserResult.Errors);
         }
-
         var user = requestToUserResult.Value;
-        ErrorOr<Created> createUserResult = _userService.CreateUser(user);
-
-        return createUserResult.Match(
-            _ => CreatedAtGetUser(user),
+        HomieCore.Data.User modelTransformUser = MapModelToData(user);
+        Task<ErrorOr<Created>> createUserResult = _userService.CreateUser(modelTransformUser);
+        return createUserResult.Result.Match(
+            _ => CreatedAtGetUser(modelTransformUser),
             errors => Problem(errors));
     }
      [HttpGet("{id:guid}")]
-    public IActionResult GetUser(Guid id)
+    public IActionResult GetUser(int id)
     {
-        ErrorOr<User> getUserResult = _userService.GetUser(id);
+        var getUserResult = _userService.GetUser(id);
         return getUserResult.Match(
             user => Ok(MapUserResponse(user)),
             errors => Problem(errors)
         );
     }
-    [HttpPut("{id:guid}")]
-    public IActionResult UpsertUser(Guid id, UpsertUserRequest request)
+    [HttpGet("")]
+    public IActionResult GetAllUser(){
+       List<HomieCore.Data.User> getAllUserResult = _userService.GetAllUser();
+        return Ok(getAllUserResult);
+     }
+    [HttpPut("{id:int}")]
+    public IActionResult UpsertUser(int id, UpsertUserRequest request)
     {
-        ErrorOr<User> requestToUserResult = HomieCore.Models.User.From( id, request);
+        ErrorOr<HomieCore.Models.User> requestToUserResult = HomieCore.Models.User.From( id, request);
         if (requestToUserResult.IsError){
             return Problem(requestToUserResult.Errors);
         }
         var user = requestToUserResult.Value;
-        ErrorOr<UpsertedUser> upsertedUserResult = _userService.UpsertUser(user);
-        return upsertedUserResult.Match(
-            upserted => upserted.IsNewUser ? CreatedAtGetUser(user) : NoContent(),
+        HomieCore.Data.User modelUserTransform = MapModelToData(user);
+        Task<ErrorOr<UpsertedUser>> upsertedUserResult = _userService.UpsertUser(modelUserTransform);
+        return upsertedUserResult.Result.Match(
+            upserted => upserted.IsNewUser ? CreatedAtGetUser(MapModelToData(user)) : NoContent(),
             errors => Problem (errors)
         );
     }
 
-    [HttpDelete("{id:guid}")]
-    public IActionResult DeleteUser(Guid id)
+    [HttpDelete("{id:int}")]
+    public IActionResult DeleteUser(int id)
     {
-        ErrorOr<Deleted> deletedUserResult= _userService.DeleteUser(id);
-        return deletedUserResult.Match(
+       Task<ErrorOr<Deleted>> deletedUserResult= _userService.DeleteUser(id);
+        return deletedUserResult.Result.Match(
             _ => NoContent(),
             errors => Problem(errors)
         );
     }
-    private static UserResponse MapUserResponse(User user){
+    private static UserResponse MapUserResponse(HomieCore.Data.User user){
             return new UserResponse(
                 user.Id,
                 user.FirstName,
                 user.LastName,
-                user.LastModifiedDateTime,
-                user.Groups
+                user.LastModifiedDateTime
             );
         }
-    private CreatedAtActionResult CreatedAtGetUser(User user)
+    private CreatedAtActionResult CreatedAtGetUser(HomieCore.Data.User user)
     {
         return CreatedAtAction(
             actionName: nameof(GetUser),
             routeValues: new {id = user.Id},
             value: MapUserResponse(user)
         );
+    }
+    private static HomieCore.Data.User MapModelToData(HomieCore.Models.User user){
+        return  new HomieCore.Data.User{
+        Id=user.Id,
+        FirstName=user.FirstName,
+        LastName=user.LastName,
+        LastModifiedDateTime=user.LastModifiedDateTime};
     }
 }

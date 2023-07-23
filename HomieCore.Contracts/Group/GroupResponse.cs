@@ -1,10 +1,8 @@
 namespace HomieCore.Contracts.Group;
 
 public record GroupResponse(
-    Guid Id,
+    int Id,
     string GroupName,
     string GroupDescription,
-    List<string> Users,
-    List<string> Tasks,
     DateTime LastModifiedTime
 );

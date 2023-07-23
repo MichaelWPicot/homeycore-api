@@ -5,8 +5,9 @@ namespace HomieCore.Services.Groups;
 
 public interface IGroupService
 {
-    ErrorOr<Created> CreateGroup(Group group);
-    ErrorOr<Group> GetGroup(Guid id);
-    ErrorOr<Deleted> DeleteGroup(Guid id);
-    ErrorOr<UpsertedGroup> UpsertGroup(Group group);
+    Task<ErrorOr<Created>> CreateGroup(HomieCore.Data.Group group);
+    ErrorOr<HomieCore.Data.Group> GetGroup(int id);
+    Task<ErrorOr<Deleted>> DeleteGroup(int id);
+    Task<ErrorOr<UpsertedGroup>> UpsertGroup(HomieCore.Data.Group group);
+    List<HomieCore.Data.Group> GetAllGroup();
 }

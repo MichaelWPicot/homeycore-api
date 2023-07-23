@@ -17,7 +17,7 @@ namespace HomieCore.Data
         public DbSet<Task> Tasks {get;set;} =null!;
         public DbSet<GroupTask> GroupTask {get;set;} =null!;
         public DbSet<GroupUser> GroupUser {get;set;} =null!;
-        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
         modelBuilder.Entity<GroupUser>().HasKey(

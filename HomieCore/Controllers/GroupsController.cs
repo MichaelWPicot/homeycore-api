@@ -10,10 +10,6 @@ namespace HomieCore.Controllers;
 
 public class GroupsController : ApiController
 {
-    private readonly DataContext _datacontext;
-    public GroupsController(DataContext dataContext){
-        _datacontext = dataContext;
-    }
     //inject service dependancy
     private readonly IGroupService _groupService;
     public GroupsController(IGroupService groupService)
@@ -28,65 +24,75 @@ public class GroupsController : ApiController
         {
             return Problem(requestToGroupResult.Errors);
         }
-
         var group = requestToGroupResult.Value;
-        ErrorOr<Created> createGroupResult = _groupService.CreateGroup(group);
-
-        return createGroupResult.Match(
-            _ => CreatedAtGetGroup(group),
+        HomieCore.Data.Group modelTransformGroup = MapModelToData(group);
+        Task<ErrorOr<Created>> createGroupResult = _groupService.CreateGroup(MapModelToData(group));
+        return createGroupResult.Result.Match(
+            _ => CreatedAtGetGroup(MapModelToData(group)),
             errors => Problem(errors));
     }
-     [HttpGet("{id:guid}")]
-    public IActionResult GetGroup(Guid id)
+     [HttpGet("{id:int}")]
+    public IActionResult GetGroup(int id)
     {
-        Console.Write("asd");
-        ErrorOr<HomieCore.Models.Group> getGroupResult = _groupService.GetGroup(id);
-        Console.Write("asd");
+        ErrorOr<HomieCore.Data.Group> getGroupResult = _groupService.GetGroup(id);
         return getGroupResult.Match(
-            group => Ok(MapGroupResponse(group)),
+            group => Ok(group),
             errors => Problem(errors)
         );
     }
-    [HttpPut("{id:guid}")]
-    public IActionResult UpsertGroup(Guid id, UpsertGroupRequest request)
+    [HttpGet("")]
+    public IActionResult GetAllGroup()
     {
-        ErrorOr<HomieCore.Models.Group> requestToGroupResult = HomieCore.Models.Group.From( id, request);
+        List<HomieCore.Data.Group> getGroupResult = _groupService.GetAllGroup();
+        return Ok(getGroupResult);
+    }
+    [HttpPut("{id:int}")]
+       public IActionResult UpsertGroup(int id, UpsertGroupRequest request)
+    {
+       ErrorOr<HomieCore.Models.Group> requestToGroupResult = HomieCore.Models.Group.From( id, request);
         if (requestToGroupResult.IsError){
             return Problem(requestToGroupResult.Errors);
         }
         var group = requestToGroupResult.Value;
-        ErrorOr<UpsertedGroup> upsertedGroupResult = _groupService.UpsertGroup(group);
-        return upsertedGroupResult.Match(
-            upserted => upserted.IsNewGroup ? CreatedAtGetGroup(group) : NoContent(),
+        HomieCore.Data.Group modelGroupTransform = MapModelToData(group);
+        Task<ErrorOr<UpsertedGroup>> upsertedGroupResult = _groupService.UpsertGroup(modelGroupTransform);
+        return upsertedGroupResult.Result.Match(
+            upserted => upserted.IsNewGroup ? CreatedAtGetGroup(MapModelToData(group)) : NoContent(),
             errors => Problem (errors)
         );
     }
 
-    [HttpDelete("{id:guid}")]
-    public IActionResult DeleteGroup(Guid id)
+    [HttpDelete("{id:int}")]
+    public IActionResult DeleteGroup(int id)
     {
-        ErrorOr<Deleted> deletedGroupResult= _groupService.DeleteGroup(id);
-        return deletedGroupResult.Match(
+        Task<ErrorOr<Deleted>> deletedGroupResult= _groupService.DeleteGroup(id);
+        return deletedGroupResult.Result.Match(
             _ => NoContent(),
             errors => Problem(errors)
         );
     }
-    private static GroupResponse MapGroupResponse(HomieCore.Models.Group group){
+    private static GroupResponse MapGroupResponse(HomieCore.Data.Group group){
             return new GroupResponse(
                 group.Id,
                 group.GroupName,
                 group.GroupDescription,
-                group.Tasks,
-                group.Users,
                 group.LastModifiedTime
             );
         }
-    private CreatedAtActionResult CreatedAtGetGroup(HomieCore.Models.Group group)
+    private CreatedAtActionResult CreatedAtGetGroup(HomieCore.Data.Group group)
     {
         return CreatedAtAction(
             actionName: nameof(GetGroup),
             routeValues: new {id = group.Id},
             value: MapGroupResponse(group)
         );
+    }
+        private static HomieCore.Data.Group MapModelToData(HomieCore.Models.Group group){
+        return  new HomieCore.Data.Group{
+        Id=group.Id,
+        GroupName=group.GroupName,
+        GroupDescription=group.GroupDescription,
+        LastModifiedTime=group.LastModifiedTime
+        };
     }
 }

@@ -8,35 +8,27 @@ public sealed class Group{
     public const int MinNameLength=2;
     public const int MaxNameLength=20;
     public const int MaxDescriptionLength=200;
-    public Guid Id {get;}
+    public int Id {get;}
     public string GroupName {get;}
     public string GroupDescription {get;}
     public DateTime LastModifiedTime {get;}
-    public List<string> Users {get;}
-    public List<string> Tasks {get;}
 
     private Group(
-        Guid id,
+        int id,
         string groupName,
         string groupDescription,
-        DateTime lastModifiedTime,
-        List<string> users,
-        List<string> tasks
+        DateTime lastModifiedTime
     ){
         Id = id;
         GroupName = groupName;
         GroupDescription = groupDescription;
         LastModifiedTime = lastModifiedTime;
-        Users = users;
-        Tasks = tasks;
     }
 
     public static ErrorOr<Group> Create(
         string groupName,
         string groupDescription,
-        List<string>? users = null,
-        List<string>? tasks = null,
-        Guid? id = null
+        int? id = null
     ){
         List<Error> errors = new();
         //TODO: Implement error logic
@@ -52,15 +44,11 @@ public sealed class Group{
             return errors;
         }
         //TODO: Pull current user id and pass in as the sole user in the List.
-        List<string> emptyUsers = new();
-        List<string> emptyTasks = new();
         return new Group(
-            id ?? Guid.NewGuid(),
+            id ?? BitConverter.ToInt32(Guid.NewGuid().ToByteArray()),
             groupName,
             groupDescription,
-            DateTime.UtcNow,
-            users ?? emptyUsers,
-            tasks ?? emptyTasks
+            DateTime.UtcNow
         );
     }
     public static ErrorOr<Group> From(CreateGroupRequest request)
@@ -70,13 +58,11 @@ public sealed class Group{
                 request.GroupDescription
             );
         }
-    public static ErrorOr<Group> From(Guid id, UpsertGroupRequest request)
+    public static ErrorOr<Group> From(int id, UpsertGroupRequest request)
     {
         return Create(
             request.GroupName,
             request.GroupDescription,
-            request.Users,
-            request.Tasks,
             id
         );
     }

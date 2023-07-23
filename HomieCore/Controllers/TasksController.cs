@@ -18,36 +18,15 @@ public class TasksController : ApiController
     public IActionResult CreateTask(CreateTaskRequest request)
     {
         ErrorOr<HomieCore.Models.Task> requestToTaskResult = HomieCore.Models.Task.From(request);
-
         if (requestToTaskResult.IsError)
         {
             return Problem(requestToTaskResult.Errors);
         }
         var task = requestToTaskResult.Value;
-        HomieCore.Data.Task modelTransformTask = new HomieCore.Data.Task{
-        Id=task.Id,
-        TaskName=task.TaskName,
-        TaskDescription=task.TaskDescription,
-        CompleteByDate=task.CompleteByDate,
-        // public string TaskDescription { get; set; } = null!;
-        // public DateTime CompleteByDate { get; set; }
-        // public DateTime TaskCreatedDate { get; set; }
-        // public DateTime LastModifiedDateTime { get; set; }
-        // public ICollection<GroupTask> GroupTasks { get; set; } = null!;
-        // [ForeignKey("CreatedUser")]
-        // public int? CreatedUserId { get; set; }
-        // public User? CreatedUser { get; set; }
-        // [ForeignKey("AssignedUser")]
-        // public int? AssignedUserId { get; set; }
-        // public User? AssignedUser
-        // {
-        //     get; set;
-        // }
-        }
-        ErrorOr<Created> createTaskResult = _taskService.CreateTask(modelTransformTask);
-
-        return createTaskResult.Match(
-            _ => CreatedAtGetTask(task),
+        HomieCore.Data.Task modelTransformTask = MapModelToData(task);
+        Task<ErrorOr<Created>> createTaskResult = _taskService.CreateTask(modelTransformTask);
+        return createTaskResult.Result.Match(
+            _ => CreatedAtGetDataTask(MapModelToData(task)),
             errors => Problem(errors));
     }
      [HttpGet("{id:int}")]
@@ -63,54 +42,53 @@ public class TasksController : ApiController
        List<HomieCore.Data.Task> getAllTaskResult = _taskService.GetAllTask();
         return Ok(getAllTaskResult);
      }
-    [HttpPut("{id:guid}")]
-    public IActionResult UpsertTask(Guid id, UpsertTaskRequest request)
+    [HttpPut("{id:int}")]
+    public IActionResult UpsertTask(int id, UpsertTaskRequest request)
     {
         ErrorOr<HomieCore.Models.Task> requestToTaskResult = HomieCore.Models.Task.From( id, request);
         if (requestToTaskResult.IsError){
             return Problem(requestToTaskResult.Errors);
         }
         var task = requestToTaskResult.Value;
-        ErrorOr<UpsertedTask> upsertedTaskResult = _taskService.UpsertTask(task);
-        return upsertedTaskResult.Match(
-            upserted => upserted.IsNewTask ? CreatedAtGetTask(task) : NoContent(),
+        HomieCore.Data.Task modelTaskTransform = MapModelToData(task);
+        Task<ErrorOr<UpsertedTask>> upsertedTaskResult = _taskService.UpsertTask(modelTaskTransform);
+        return upsertedTaskResult.Result.Match(
+            upserted => upserted.IsNewTask ? CreatedAtGetDataTask(MapModelToData(task)) : NoContent(),
             errors => Problem (errors)
         );
     }
-
-    [HttpDelete("{id:guid}")]
-    public IActionResult DeleteTask(Guid id)
+    [HttpDelete("{id:int}")]
+    public IActionResult DeleteTask(int id)
     {
-        ErrorOr<Deleted> deletedTaskResult= _taskService.DeleteTask(id);
-        return deletedTaskResult.Match(
+        Task<ErrorOr<Deleted>> deletedTaskResult= _taskService.DeleteTask(id);
+        return deletedTaskResult.Result.Match(
             _ => NoContent(),
             errors => Problem(errors)
         );
     }
-    private static TaskResponse MapTaskResponse(HomieCore.Models.Task task){
-            return new TaskResponse(
-                task.Id,
-                task.TaskName,
-                task.TaskDescription,
-                task.LastModifiedDateTime,
-                task.TaskCreatedDate,
-                task.CompleteByDate,
-                task.CreatedUserId,
-                task.AssignedUserId
-            );
-        }
-         private static FilteredResponse MapTaskDataResponse(HomieCore.Data.Task task){
+    private static FilteredResponse MapTaskDataResponse(HomieCore.Data.Task task){
             return new FilteredResponse(
                 task.TaskName,
                 task.TaskDescription
             );
         }
-    private CreatedAtActionResult CreatedAtGetTask(HomieCore.Models.Task task)
+     private CreatedAtActionResult CreatedAtGetDataTask(HomieCore.Data.Task task)
     {
         return CreatedAtAction(
             actionName: nameof(GetTask),
             routeValues: new {id = task.Id},
-            value: MapTaskResponse(task)
+            value: MapTaskDataResponse(task)
         );
+    }
+    private static HomieCore.Data.Task MapModelToData(HomieCore.Models.Task task){
+        return  new HomieCore.Data.Task{
+        Id=task.Id,
+        TaskName=task.TaskName,
+        TaskDescription=task.TaskDescription,
+        CompleteByDate=task.CompleteByDate,
+        TaskCreatedDate=task.TaskCreatedDate,
+        LastModifiedDateTime=task.LastModifiedDateTime,
+        CreatedUserId=task.CreatedUserId,
+        AssignedUserId=task.AssignedUserId};
     }
 }
