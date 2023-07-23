@@ -1,0 +1,29 @@
+@id=8450a3d9-6797-4e22-aa71-ac6f55b968f8
+@url=http://localhost:5190
+### POST REQUEST
+POST {{url}}/tasks
+Content-Type: application/json
+
+{
+    "taskName":"Created Task",
+    "taskDescription":"Created Description",
+    "completeByDate":"{{$datetime iso8601}}",
+    "createdUserId":2,
+    "assignedUserId":1    
+}
+### GET REQUEST
+GET {{url}}/tasks/{{id}}
+### UPSERT REQUEST/ POST REQUEST WHEN TASK ID IS NOT FOUND
+PUT {{url}}/tasks/{{id}}
+Content-Type: application/json
+
+{
+    "taskName":"Upserted Task",
+    "taskDescription":"Upserted Description",
+    "completeByDate":"{{$datetime iso8601}}",
+    "createdUserId":2,
+    "assignedUserId":1    
+}
+### DELETE REQUEST
+DELETE {{url}}/tasks/{{id}}
+

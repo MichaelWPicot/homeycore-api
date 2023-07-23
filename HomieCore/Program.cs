@@ -1,4 +1,6 @@
 using HomieCore.Services.Users;
+using HomieCore.Services.Groups;
+using HomieCore.Services.Tasks;
 using HomieCore.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,7 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddControllers();
     // builder.Services.AddTransient<TaskDataSeed>();
     builder.Services.AddScoped<IUserService, UserService>();
-    builder.Services.AddDbContext<TaskDataContext>(
+    builder.Services.AddScoped<IGroupService, GroupService>();
+    builder.Services.AddScoped<ITaskService, TaskService>();
+    builder.Services.AddDbContext<DataContext>(
         o =>o.UseNpgsql(Environment.GetEnvironmentVariable("TASKSDB_CONNECTION_STRING")));
 
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

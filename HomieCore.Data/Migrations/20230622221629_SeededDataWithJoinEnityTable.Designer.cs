@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace HomieCore.Data.Migrations
 {
-    [DbContext(typeof(TaskDataContext))]
+    [DbContext(typeof(DataContext))]
     [Migration("20230622221629_SeededDataWithJoinEnityTable")]
     partial class SeededDataWithJoinEnityTable
     {

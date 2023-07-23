@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace HomieCore.Data
 {
-    public class TaskDataContext: DbContext
+    public class DataContext: DbContext
     {
+        public DataContext(DbContextOptions<DataContext> options): base(options)
+        {
+        }
         public DbSet<User> Users {get;set;} = null!;
         public DbSet<Group> Groups {get;set;} = null!;
         public DbSet<Task> Tasks {get;set;} =null!;
         public DbSet<GroupTask> GroupTask {get;set;} =null!;
         public DbSet<GroupUser> GroupUser {get;set;} =null!;
-        public TaskDataContext(DbContextOptions<TaskDataContext> options):
-        base(options)
-        {
-        }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
         modelBuilder.Entity<GroupUser>().HasKey(

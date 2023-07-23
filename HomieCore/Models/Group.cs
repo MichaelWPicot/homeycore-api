@@ -40,6 +40,14 @@ public sealed class Group{
     ){
         List<Error> errors = new();
         //TODO: Implement error logic
+        if (groupName.Length is < MinNameLength or > MaxNameLength)
+        {
+            errors.Add(Errors.Group.InvalidName);
+        }
+          if (groupName.Length is < MinNameLength or > MaxNameLength)
+        {
+            errors.Add(Errors.Group.InvalidName);
+        }
         if (errors.Count>0){
             return errors;
         }

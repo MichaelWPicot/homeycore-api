@@ -3,11 +3,17 @@ using HomieCore.Contracts.Group;
 using HomieCore.Models;
 using HomieCore.Services.Groups;
 using HomieCore.ServiceErrors;
+using HomieCore.Data;
 using ErrorOr;
+
 namespace HomieCore.Controllers;
 
 public class GroupsController : ApiController
 {
+    private readonly DataContext _datacontext;
+    public GroupsController(DataContext dataContext){
+        _datacontext = dataContext;
+    }
     //inject service dependancy
     private readonly IGroupService _groupService;
     public GroupsController(IGroupService groupService)
@@ -17,8 +23,7 @@ public class GroupsController : ApiController
     [HttpPost]
     public IActionResult CreateGroup(CreateGroupRequest request)
     {
-        ErrorOr<Group> requestToGroupResult = HomieCore.Models.Group.From(request);
-
+        ErrorOr<HomieCore.Models.Group> requestToGroupResult = HomieCore.Models.Group.From(request);
         if (requestToGroupResult.IsError)
         {
             return Problem(requestToGroupResult.Errors);
@@ -34,7 +39,9 @@ public class GroupsController : ApiController
      [HttpGet("{id:guid}")]
     public IActionResult GetGroup(Guid id)
     {
-        ErrorOr<Group> getGroupResult = _groupService.GetGroup(id);
+        Console.Write("asd");
+        ErrorOr<HomieCore.Models.Group> getGroupResult = _groupService.GetGroup(id);
+        Console.Write("asd");
         return getGroupResult.Match(
             group => Ok(MapGroupResponse(group)),
             errors => Problem(errors)
@@ -43,7 +50,7 @@ public class GroupsController : ApiController
     [HttpPut("{id:guid}")]
     public IActionResult UpsertGroup(Guid id, UpsertGroupRequest request)
     {
-        ErrorOr<Group> requestToGroupResult = HomieCore.Models.Group.From( id, request);
+        ErrorOr<HomieCore.Models.Group> requestToGroupResult = HomieCore.Models.Group.From( id, request);
         if (requestToGroupResult.IsError){
             return Problem(requestToGroupResult.Errors);
         }
@@ -64,7 +71,7 @@ public class GroupsController : ApiController
             errors => Problem(errors)
         );
     }
-    private static GroupResponse MapGroupResponse(Group group){
+    private static GroupResponse MapGroupResponse(HomieCore.Models.Group group){
             return new GroupResponse(
                 group.Id,
                 group.GroupName,
@@ -74,7 +81,7 @@ public class GroupsController : ApiController
                 group.LastModifiedTime
             );
         }
-    private CreatedAtActionResult CreatedAtGetGroup(Group group)
+    private CreatedAtActionResult CreatedAtGetGroup(HomieCore.Models.Group group)
     {
         return CreatedAtAction(
             actionName: nameof(GetGroup),

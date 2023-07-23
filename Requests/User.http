@@ -1,0 +1,27 @@
+@id=3d29dc88-4026-44a7-9aa0-f1696a1b75ff
+@url=http://localhost:5190
+### Post Request
+POST {{url}}/users
+Content-Type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Smith"
+}
+### GET REQUEST
+GET {{url}}/users/{{id}}
+### UPSERT REQUEST/ POST REQUEST WHEN USER ID IS NOT FOUND
+PUT {{url}}/users/{{id}}
+Content-Type: application/json
+
+{
+    "firstName": "Lisa",
+    "lastName": "Smith",
+    "groups": [
+        "Apartment A",
+        "Apartment B"
+    ]
+}
+### DELETE REQUEST
+DELETE {{url}}/users/{{id}}
+

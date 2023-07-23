@@ -1,0 +1,28 @@
+@id=27641d28-d152-4ee5-a621-e01cba40550f
+@url=http://localhost:5190
+### POST REQUEST
+POST {{url}}/groups
+Content-Type: application/json
+
+{
+    "groupName": "New Group",
+    "groupDescription": "Sample Created Group"
+}
+### GET REQUEST
+GET {{url}}/groups/{{id}}
+
+### UPSERT REQUEST / POST WHEN NO USER IS FOUND
+PUT {{url}}/groups/{{id}}
+Content-Type: application/json
+
+{
+   "groupName": "Upserted Group",
+   "groupDescription": "Sample Upserted Group",
+   "tasks": [],
+   "users": []
+}
+### DELETE REQUEST
+DELETE {{url}}/groups/{{id}}
+
+
+
