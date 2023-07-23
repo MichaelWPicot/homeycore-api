@@ -59,6 +59,7 @@ namespace HomieCore.Data
                         AssignedUserId=1,
                     }
             );
+            
             modelBuilder.Entity<GroupTask>().HasData(
             new GroupTask(){
                 GroupsId=1,
