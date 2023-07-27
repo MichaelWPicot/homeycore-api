@@ -527,6 +527,7 @@ DELETE /tasks/{{id}}
 ```js
 204 No Content
 ```
+
 ___
 ## Credits
 Libraries and extensions used:
