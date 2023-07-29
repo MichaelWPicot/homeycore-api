@@ -11,7 +11,7 @@
     <PackageReference Include="ErrorOr" Version="0.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
-    <!-- <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" /> -->
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <ProjectReference Include="..\HomieCore.Contracts\HomieCore.Contracts.csproj" />
     <ProjectReference Include="..\HomieCore.Data\HomieCore.Data.csproj" />
   </ItemGroup>

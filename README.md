@@ -20,7 +20,9 @@ These tables are organized within a PostgreSQL relational database for data mana
 
 Before launching the application, set up a database connection and configure your PostgreSQL database. You can find detailed instructions on how to accomplish this in the [Database Migrations](#database-migrations) and [How to Install](#how-to-install) sections. 
 
-A detailed description of the [Database Schema](#database-schema) is provided to explain the database's entity relationships.
+A detailed description of the [Database Schema](#database-schema) is provided to explain the database's entity relationships. Detailed documentation for the API, including all HTTP requests, is readily available by running the application in development and navigating to the following URL:
+```{host}/swagger```
+
 ___
 # Service Architecture
 
@@ -80,7 +82,7 @@ ___
 ___
 
 # Technologies
-This project utilizes the following technologies: `C#` `ASP.NET v7.0` `ASP.NET Core OpenApi` `ASP.NET Core MVC` `ASP.NET Entity Framework Core` `Npgsql` `PostgreSQL` `dotnet CLI`
+This project utilizes the following technologies: `C#` `ASP.NET v7.0` `ASP.NET Core OpenApi` `ASP.NET Core MVC` `ASP.NET Entity Framework Core` `Npgsql` `PostgreSQL` `dotnet CLI` `Swagger`
 ___
 # How To Install
 1. run `git clone https://github.com/MichaelWPicot/homiecore-api`
@@ -101,7 +103,9 @@ ___
 The application database consists of five tables: `Tasks`, `Users`, `Groups`, `GroupTask`, and `GroupUser`.
 
 Refer to the Entity Relationship Diagram below for a visual depiction of this schema:
+
 ![ER Diagram](Docs/ERDiagram.png)
+
 ### Tasks
 
 

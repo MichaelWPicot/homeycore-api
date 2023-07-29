@@ -45,3 +45,6 @@ C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Deb
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\System.CodeDom.dll
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\DotNetEnv.dll
 C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Sprache.dll
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Michael\Desktop\coding\asp-net-api-monorepo\HomieCore\HomieCore\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
