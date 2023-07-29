@@ -54,7 +54,6 @@ public sealed class User{
             request.FirstName,
             request.LastName);
     }
-
     public static ErrorOr<User> From(int id, UpsertUserRequest request)
     {
         return Create(
