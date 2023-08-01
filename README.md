@@ -24,7 +24,6 @@ A detailed description of the [Database Schema](#database-schema) is provided to
 ```{host}/swagger```
 ___
 # Service Architecture
-
 - HomieCore.Contracts
     - Group
         - CreateGroupRequest.cs
