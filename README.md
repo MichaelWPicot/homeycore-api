@@ -22,7 +22,6 @@ Before launching the application, set up a database connection and configure you
 
 A detailed description of the [Database Schema](#database-schema) is provided to explain the database's entity relationships. Detailed documentation for the API, including all HTTP requests, is readily available by running the application in development and navigating to the following URL:
 ```{host}/swagger```
-
 ___
 # Service Architecture
 
