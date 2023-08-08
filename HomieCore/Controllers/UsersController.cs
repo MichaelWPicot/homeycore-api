@@ -29,7 +29,7 @@ public class UsersController : ApiController
             _ => CreatedAtGetUser(modelTransformUser),
             errors => Problem(errors));
     }
-     [HttpGet("{id:guid}")]
+     [HttpGet("{id:int}")]
     public IActionResult GetUser(int id)
     {
         var getUserResult = _userService.GetUser(id);
