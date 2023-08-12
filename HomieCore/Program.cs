@@ -13,6 +13,14 @@ var builder = WebApplication.CreateBuilder(args);
     DotNetEnv.Env.Load();
     builder.Services.AddControllers();
     // builder.Services.AddTransient<TaskDataSeed>();
+    _ = builder.Services.AddCors(options =>
+    {
+        options.AddPolicy(name: "HomieCorePolicy",
+                      policy =>
+                      {
+                          policy.WithOrigins(Environment.GetEnvironmentVariable("CORS_ALLOWED_ORIGIN"));
+                      });
+    });
     builder.Services.AddScoped<IUserService, UserService>();
     builder.Services.AddScoped<IGroupService, GroupService>();
     builder.Services.AddScoped<ITaskService, TaskService>();
@@ -38,6 +46,7 @@ if (app.Environment.IsDevelopment())
 }
 app.UseExceptionHandler("/error");
 app.UseHttpsRedirection();
+app.UseCors();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
