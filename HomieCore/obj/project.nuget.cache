@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6X2R7fWesCJYDu7Z3ljNYxNZ3uhpNn0+a9r3lA8Ls8AMSwKlopc+AcU2o9x+1nB0wX3rxlsamOM0vFFlaeiP+g==",
+  "dgSpecHash": "p3re8hlAHUIIuqXmqijiPrXP1iCGHEUc/Zjc3j5Ef+KgsnEzZPjQuWDdZvC72RJaHt7n41EiHONYxVPTa+mQiw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore\\HomieCore.csproj",
+  "projectFilePath": "c:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore\\HomieCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Michael\\.nuget\\packages\\dotnetenv\\2.5.0\\dotnetenv.2.5.0.nupkg.sha512",
     "C:\\Users\\Michael\\.nuget\\packages\\erroror\\0.1.0\\erroror.0.1.0.nupkg.sha512",
