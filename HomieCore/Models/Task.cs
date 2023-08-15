@@ -50,7 +50,7 @@ public sealed class Task{
         {
             errors.Add(Errors.Task.InvalidName);
         }
-          if (taskDescription.Length is < MinNameLength or > MaxNameLength)
+          if (taskDescription.Length is < MinNameLength or > MaxDescriptionLength)
         {
             errors.Add(Errors.Task.InvalidName);
         }

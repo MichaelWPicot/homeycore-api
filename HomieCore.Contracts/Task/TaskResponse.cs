@@ -12,6 +12,11 @@ public record TaskResponse(
 );
 
 public record FilteredResponse(
-     string TaskName,
-    string TaskDescription
+    int Id,
+    string TaskName,
+    string TaskDescription,
+    DateTime TaskCreatedDate,
+    DateTime CompleteByDate,
+    int CreatedUserId,
+    int AssignedUserId
 );

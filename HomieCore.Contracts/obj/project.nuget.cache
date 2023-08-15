@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qLwS58+ygi9bu43njkHvq4qIjZbGvkRVY9KHU7c+5hfK3rljaP7YStLa8VzYZvbbDd9wCTtiOD6DwvFgPsHPrg==",
+  "dgSpecHash": "mO+UZX8f0zfnxS5XId9hSElpyaPD7t6am+l1ppYnJUMjg5jDpCiQGyBw1NEe1NqsooAMccqvEZbpJtY5Ju0ZdQ==",
   "success": true,
-  "projectFilePath": "c:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Contracts\\HomieCore.Contracts.csproj",
+  "projectFilePath": "C:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Contracts\\HomieCore.Contracts.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

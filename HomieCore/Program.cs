@@ -1,6 +1,7 @@
 using HomieCore.Services.Users;
 using HomieCore.Services.Groups;
 using HomieCore.Services.Tasks;
+using HomieCore.Services.GroupTask;
 using HomieCore.Data;
 using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Swagger;
@@ -24,6 +25,8 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddScoped<IUserService, UserService>();
     builder.Services.AddScoped<IGroupService, GroupService>();
     builder.Services.AddScoped<ITaskService, TaskService>();
+    builder.Services.AddScoped<IGroupTaskService, GroupTaskService>();
+
     builder.Services.AddDbContext<DataContext>(
         o =>o.UseNpgsql(Environment.GetEnvironmentVariable("TASKSDB_CONNECTION_STRING")));
     builder.Services.AddEndpointsApiExplorer();

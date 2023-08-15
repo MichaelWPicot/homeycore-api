@@ -49,7 +49,7 @@ namespace HomieCore.Data
         }
     }
     public class GroupTask{
-    public int GroupsId { get; set; }
+    public int? GroupsId { get; set; }
     public int TasksId { get; set; }
     public Group Group {get;set;}=null!;
     public Task Task {get;set;}=null!;

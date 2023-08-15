@@ -36,7 +36,7 @@ public sealed class Group{
         {
             errors.Add(Errors.Group.InvalidName);
         }
-          if (groupName.Length is < MinNameLength or > MaxNameLength)
+          if (groupName.Length is < MinNameLength or > MaxDescriptionLength)
         {
             errors.Add(Errors.Group.InvalidName);
         }

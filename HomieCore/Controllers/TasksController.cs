@@ -45,6 +45,7 @@ public class TasksController : ApiController
     [HttpPut("{id:int}")]
     public IActionResult UpsertTask(int id, UpsertTaskRequest request)
     {
+        Console.WriteLine("Attempting Upsert");
         ErrorOr<HomieCore.Models.Task> requestToTaskResult = HomieCore.Models.Task.From( id, request);
         if (requestToTaskResult.IsError){
             return Problem(requestToTaskResult.Errors);
@@ -68,8 +69,13 @@ public class TasksController : ApiController
     }
     private static FilteredResponse MapTaskDataResponse(HomieCore.Data.Task task){
             return new FilteredResponse(
+                task.Id,
                 task.TaskName,
-                task.TaskDescription
+                task.TaskDescription,
+                task.TaskCreatedDate,
+                task.CompleteByDate,
+                (int)task.CreatedUserId!,
+                (int)task.AssignedUserId!
             );
         }
      private CreatedAtActionResult CreatedAtGetDataTask(HomieCore.Data.Task task)

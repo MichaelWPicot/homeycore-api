@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore\\HomieCore.csproj": {}
+    "C:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore\\HomieCore.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Contracts\\HomieCore.Contracts.csproj": {
+    "C:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Contracts\\HomieCore.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Contracts\\HomieCore.Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Contracts\\HomieCore.Contracts.csproj",
         "projectName": "HomieCore.Contracts",
-        "projectPath": "c:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Contracts\\HomieCore.Contracts.csproj",
+        "projectPath": "C:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Contracts\\HomieCore.Contracts.csproj",
         "packagesPath": "C:\\Users\\Michael\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Contracts\\obj\\",
+        "outputPath": "C:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -64,14 +64,14 @@
         }
       }
     },
-    "c:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Data\\HomieCore.Data.csproj": {
+    "C:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Data\\HomieCore.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Data\\HomieCore.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Data\\HomieCore.Data.csproj",
         "projectName": "HomieCore.Data",
-        "projectPath": "c:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Data\\HomieCore.Data.csproj",
+        "projectPath": "C:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Data\\HomieCore.Data.csproj",
         "packagesPath": "C:\\Users\\Michael\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Data\\obj\\",
+        "outputPath": "C:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -134,14 +134,14 @@
         }
       }
     },
-    "c:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore\\HomieCore.csproj": {
+    "C:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore\\HomieCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore\\HomieCore.csproj",
+        "projectUniqueName": "C:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore\\HomieCore.csproj",
         "projectName": "HomieCore",
-        "projectPath": "c:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore\\HomieCore.csproj",
+        "projectPath": "C:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore\\HomieCore.csproj",
         "packagesPath": "C:\\Users\\Michael\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore\\obj\\",
+        "outputPath": "C:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -164,11 +164,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "c:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Contracts\\HomieCore.Contracts.csproj": {
-                "projectPath": "c:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Contracts\\HomieCore.Contracts.csproj"
+              "C:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Contracts\\HomieCore.Contracts.csproj": {
+                "projectPath": "C:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Contracts\\HomieCore.Contracts.csproj"
               },
-              "c:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Data\\HomieCore.Data.csproj": {
-                "projectPath": "c:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Data\\HomieCore.Data.csproj"
+              "C:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Data\\HomieCore.Data.csproj": {
+                "projectPath": "C:\\Users\\Michael\\Desktop\\coding\\asp-net-api-monorepo\\HomieCore\\HomieCore.Data\\HomieCore.Data.csproj"
               }
             }
           }
@@ -191,9 +191,17 @@
               "target": "Package",
               "version": "[0.1.0, )"
             },
+            "Microsoft.AspNetCore.HttpsPolicy": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.5, )"
+            },
+            "Microsoft.Extensions.Logging.Console": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
